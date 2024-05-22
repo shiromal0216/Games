@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ImageContentTask Include="Textures\Stage1Button.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Stage1Contents.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Stage2Button.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Stage2Contents.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Stage3Button.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Stage3Contents.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\STAGECLEAR.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\StartGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Title.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\WASD.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Shadow.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\SettledGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\SelectEnter.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\SelectFream.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\SelectButton.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\robot_RL.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Press to start.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\NotingHappen.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\NotingGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\LockedGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\LightGetGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\KeyGetGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\FadeMask.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\E_Set.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\E_Check.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\ArmL_UD.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\BackGround.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\ItemFrame.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\Key.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\LightBall.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\CrowBar.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\CrawBarGetGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\StuckGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\BarOpenGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\KeyOpenGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+    <ImageContentTask Include="Textures\MapGuide.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\PixelShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PS_Fade.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PS_Robot.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PS_Test.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SM_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SM_PS_Depth.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SM_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\SM_VS_Depth.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="settings.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="ImaseLib\Camera.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\DebugCamera.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\DebugFont.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\DepthStencil.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\DisplayCollision.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\ModelCollision.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\ResourceManager.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\ShadowMap.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\TaskManager.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Task\Number.cpp">
+      <Filter>Task</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\GameCamera.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\StageSelectScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\TitleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ImaseLib\TransitionMask.cpp">
+      <Filter>ImaseLib</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugDraw.cpp" />
+    <ClCompile Include="DeviceResources.cpp" />
+    <ClCompile Include="RenderTexture.cpp" />
+    <ClCompile Include="Scene\GameStageScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MeshContentTask Include="FBX\Arm_L.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Arm_R.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Body.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Cabinet.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Desk.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Floor.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Head.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Leg.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Missile.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Potted.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\SpotLight.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Torus.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Treasure.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Wall.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\WECBox.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\WoodBox.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Bed.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="FBX\Lantern.fbx">
+      <Filter>FBX</Filter>
+    </MeshContentTask>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="ImaseLib\SceneManager.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="SpriteSheet.h" />
+    <ClInclude Include="ImaseLib\Camera.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\Collision.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\DebugCamera.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\DebugFont.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\DepthStencil.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\DisplayCollision.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\ModelCollision.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\ModelPart.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\ResourceManager.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\ShadowMap.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\TaskManager.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Task\Number.h">
+      <Filter>Task</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\GameCamera.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Object.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\StageSelectScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\TitleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\CommonSys.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\TransitionMask.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="ImaseLib\UserResources.h">
+      <Filter>ImaseLib</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugDraw.h" />
+    <ClInclude Include="DeviceResources.h" />
+    <ClInclude Include="ReadData.h" />
+    <ClInclude Include="RenderTexture.h" />
+    <ClInclude Include="StepTimer.h" />
+    <ClInclude Include="Scene\GameStageScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="directx.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Shaders\SM_Common.hlsli">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ImaseLib">
+      <UniqueIdentifier>{73c5d245-e03c-4cf3-9d69-2b49e3fe9b34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{9c14cc5c-f474-4ba9-ab55-9f4c130c15fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{913637b5-5960-4fa6-8819-a4bc4deaabcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Task">
+      <UniqueIdentifier>{fd0fbb29-34f0-48ea-900d-3040b4bf58a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FBX">
+      <UniqueIdentifier>{e12c4eeb-fd9a-4fa4-a4de-73a3e11770ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{99fa746e-7422-46e9-aed0-c4714f1edd95}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
