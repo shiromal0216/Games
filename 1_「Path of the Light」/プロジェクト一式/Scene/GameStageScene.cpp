@@ -1,25 +1,38 @@
+//================================================
+// 概　要：ゲームステージのプログラム
+// 作成日：2024/4/22
+// 作成者：松戸浩希
+//================================================
+
 #include "pch.h"
 #include "GameStageScene.h"
 #include "DebugDraw.h"
 #include "ReadData.h"
-#include "StageSelectScene.h"
+#include "TitleScene.h"
 
 using namespace DirectX;
 
-#define WALL_NUM 4		// 壁の数
-#define OBJECT_NUM 7	// モデルの数
-
 GameStageScene::GameStageScene()
-	: m_lightRotate{}	  , m_lightPosition{}
-	, m_lightTheta(45.0f) , m_distance(0.0f)
-	, m_fireFlag(false)   , m_lightBallFlag(false)
-	, m_nothingFlag(false), m_lightgetFlag(false)
-	, m_keygetFlag(false) , m_keyFlag(false)
-	, m_lockFlag(false)	  , m_guideFlag(true)
-	, m_notgetFlag(false) , m_stageClearFlag(false)
-	, m_crowbarFlag(false), m_bargetFlag(false)
-	, m_stuckFlag(false)  , m_barOpenFlag(false)
-	, m_keyOpenFlag(false), m_mapFlag(false)
+	: m_lightRotate{}
+	, m_lightPosition{}
+	, m_lightTheta(45.0f)
+	, m_distance(0.0f)
+	, m_fireFlag(false)
+	, m_lightBallFlag(false)
+	, m_nothingFlag(false)
+	, m_lightgetFlag(false)
+	, m_keygetFlag(false)
+	, m_keyFlag(false)
+	, m_lockFlag(false)
+	, m_guideFlag(true)
+	, m_notgetFlag(false)
+	, m_stageClearFlag(false)
+	, m_crowbarFlag(false)
+	, m_bargetFlag(false)
+	, m_stuckFlag(false)
+	, m_barOpenFlag(false)
+	, m_keyOpenFlag(false)
+	, m_mapFlag(false)
 {
 }
 
@@ -38,14 +51,14 @@ void GameStageScene::Initialize()
 	m_camera.SetPlayer(m_robotPosition, m_robotRotate);
 
 	// ロボットの各パーツの作成
-	m_parts[ROOT] = std::make_unique<Imase::ModelPart>();
-	m_parts[HEAD] = std::make_unique<Imase::ModelPart>(m_headModel.get());
-	m_parts[BODY] = std::make_unique<Imase::ModelPart>(m_bodyModel.get());
-	m_parts[LEG]  = std::make_unique<Imase::ModelPart>(m_legModel.get());
-	m_parts[ARM_R] = std::make_unique<Imase::ModelPart>(m_armRModel.get());
-	m_parts[ARM_L] = std::make_unique<Imase::ModelPart>(m_armLModel.get());
-	m_parts[LIGHT] = std::make_unique<Imase::ModelPart>(m_lightModel.get());
-	m_parts[MISSILE] = std::make_unique<Imase::ModelPart>(m_missileModel.get());
+	m_parts[ROOT] = std::make_unique<Matsudo::ModelPart>();
+	m_parts[HEAD] = std::make_unique<Matsudo::ModelPart>(m_headModel.get());
+	m_parts[BODY] = std::make_unique<Matsudo::ModelPart>(m_bodyModel.get());
+	m_parts[LEG]  = std::make_unique<Matsudo::ModelPart>(m_legModel.get());
+	m_parts[ARM_R] = std::make_unique<Matsudo::ModelPart>(m_armRModel.get());
+	m_parts[ARM_L] = std::make_unique<Matsudo::ModelPart>(m_armLModel.get());
+	m_parts[LIGHT] = std::make_unique<Matsudo::ModelPart>(m_lightModel.get());
+	m_parts[MISSILE] = std::make_unique<Matsudo::ModelPart>(m_missileModel.get());
 
 	// ロボットの各パーツを連結する
 	m_parts[ROOT]->SetChild(m_parts[LEG].get());
@@ -256,15 +269,16 @@ void GameStageScene::Update(float elapsedTime)
 	// シーンの切り替え
 	// ---------------------------------- //
 	// ステージクリア後にタイトルシーンへ戻る
-	if (m_stageClearFlag  && kbTracker->pressed.Enter)
+	if (m_stageClearFlag && kbTracker->pressed.Enter)
 	{
 		// クローズする
 		transitionMask->Close();
 	}
 	// クローズしたら別のシーンへ
-	if (m_stageClearFlag  && transitionMask->IsClose() && transitionMask->IsEnd())
+	if (m_stageClearFlag && transitionMask->IsClose() && transitionMask->IsEnd())
 	{
-		ChangeScene<StageSelectScene>();
+		// タイトルシーンへ遷移
+		ChangeScene<TitleScene>();
 	}
 	
 	// ロボットの衝突判定の座標設定
@@ -356,7 +370,14 @@ void GameStageScene::Render()
 	cb.lightViewProj = XMMatrixTranspose(m);
 	cb.lightPosition = m_lightPosition;
 	cb.lightDirection = lightDir;
-	cb.lightAmbient = SimpleMath::Color(0.15f, 0.15f, 0.15f);	// ステージの明るさ調整
+	if (m_stageClearFlag == true)
+	{
+		cb.lightAmbient = SimpleMath::Color(0.8f, 0.8f, 0.8f);	// ステージの明るさ調整
+	}
+	else
+	{
+		cb.lightAmbient = SimpleMath::Color(0.15f, 0.15f, 0.15f);	// ステージの明るさ調整
+	}
 
 	*static_cast<ConstantBuffer*>(mappedResource.pData) = cb;
 
@@ -1202,9 +1223,6 @@ void GameStageScene::CreateDeviceDependentResources()
 	m_lightModel = Model::CreateFromCMO(device, L"Resources/Models/SpotLight.cmo", *fxrbt);
 	m_missileModel = Model::CreateFromCMO(device, L"Resources/Models/Missile.cmo", *fxrbt);
 
-	// 衝突判定の表示オブジェクトの作成
-	//m_displayCollision = std::make_unique<Imase::DisplayCollision>(device, context);
-
 	// 影の初期化関数
 	InitializeShadow(device, context);
 
@@ -1227,7 +1245,7 @@ void GameStageScene::CreateDeviceDependentResources()
 	m_shadowMapRT->SetWindow(rect);
 
 	// デプスステンシルの作成（シャドウマップ用）
-	m_shadowMapDS = std::make_unique<Imase::DepthStencil>(DXGI_FORMAT_D32_FLOAT);
+	m_shadowMapDS = std::make_unique<Matsudo::DepthStencil>(DXGI_FORMAT_D32_FLOAT);
 	m_shadowMapDS->SetDevice(device);
 	m_shadowMapDS->SetWindow(rect);
 
@@ -1388,39 +1406,6 @@ void GameStageScene::OnDeviceLost()
 {
 	Finalize();
 }
-
-//// 衝突判定の登録（デバッグ用）
-//void GameStageScene::CollisionRegist()
-//{
-//	// --------------------------------------------------------------- //
-//	// 衝突判定の登録
-//	// --------------------------------------------------------------- //
-//	// ロボット
-//	m_displayCollision->AddBoundingOrientedBox(m_robotColl[0].GetBoundingOrientedBox()); // ロボット（体）
-//	m_displayCollision->AddBoundingOrientedBox(m_robotColl[1].GetBoundingOrientedBox()); // ロボット（脚）
-//	m_displayCollision->AddBoundingOrientedBox(m_robotColl[2].GetBoundingOrientedBox()); // ロボット（右腕）
-//	m_displayCollision->AddBoundingOrientedBox(m_robotColl[3].GetBoundingOrientedBox()); // ロボット（左腕）
-//	m_displayCollision->AddBoundingOrientedBox(m_robotColl[4].GetBoundingOrientedBox()); // ロボット（ミサイル）
-//	// 各モデル
-//	m_displayCollision->AddBoundingBox(m_modelColl[0].GetBoundingBox()); // 宝箱
-//	m_displayCollision->AddBoundingBox(m_modelColl[1].GetBoundingBox()); // WEC木箱
-//	m_displayCollision->AddBoundingBox(m_modelColl[2].GetBoundingBox()); // 木箱
-//	m_displayCollision->AddBoundingBox(m_modelColl[3].GetBoundingBox()); // 戸棚
-//	m_displayCollision->AddBoundingBox(m_modelColl[4].GetBoundingBox()); // 鉢植え
-//	m_displayCollision->AddBoundingBox(m_modelColl[5].GetBoundingBox()); // ベッド
-//	m_displayCollision->AddBoundingBox(m_modelColl[6].GetBoundingBox()); // 机
-//	m_displayCollision->AddBoundingBox(m_modelColl[7].GetBoundingBox()); // ランタン
-//	// 壁
-//	m_displayCollision->AddBoundingOrientedBox(m_wallColl[0].GetBoundingOrientedBox());
-//	m_displayCollision->AddBoundingOrientedBox(m_wallColl[1].GetBoundingOrientedBox());
-//	m_displayCollision->AddBoundingOrientedBox(m_wallColl[2].GetBoundingOrientedBox());
-//	m_displayCollision->AddBoundingOrientedBox(m_wallColl[3].GetBoundingOrientedBox());
-//
-//	//// 衝突判定の表示
-//	//auto context = GetUserResources()->GetDeviceResources()->GetD3DDeviceContext();
-//	//auto states = GetUserResources()->GetCommonStates();
-//	//m_displayCollision->DrawCollision(context, states, m_view, m_proj);
-//}
 
 // OBB判定関数
 bool GameStageScene::HitCheckOBB(

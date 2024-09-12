@@ -1,11 +1,8 @@
-//--------------------------------------------------------------------------------------
-// File: ShadowMap.cpp
-//
-// シャドウマップクラス
-//
-// Date: 2022.6.19
-// Author: Hideyasu Imase
-//--------------------------------------------------------------------------------------
+//======================================================================================
+// 概　要：シャドウマップのプログラム
+// 作成日: 2024/03/27
+// 作成者: 松戸浩希
+//======================================================================================
 #include "pch.h"
 #include "ShadowMap.h"
 #include "VertexTypes.h"
@@ -13,9 +10,9 @@
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
-using namespace Imase;
+using namespace Matsudo;
 
-// 深度バイアス（初期値 0.1 バイアス値の計算は m_offset / ライトの影響範囲）
+// 深度バイアス
 const float ShadowMap::DEFALT_OFFSET = 0.2f;
 
 // シャドウマップ作成時のニアークリップの値
@@ -138,7 +135,6 @@ void ShadowMap::Initialize(ID3D11Device* device, const wchar_t* path, UINT resol
 	// 定数バッファの作成
 	{
 		D3D11_BUFFER_DESC desc = {};
-		// バッファサイズは１６の倍数でないといけない
 		size_t size = sizeof(ConstantBuffer);
 		if (size % 16) size++;
 		desc.ByteWidth = static_cast<UINT>(size * 16);
@@ -210,15 +206,11 @@ void ShadowMap::Begin(
 		buffer.lightPosition = lightPos;
 		buffer.maxDepth = maxDepth;
 		buffer.offset = m_offset / maxDepth;
-		//		buffer.VSMFilterEnable = m_vsmFilterEnable;
 		buffer.VSMFilterEnable = false;
 
 		*static_cast<ConstantBuffer*>(mappedResource.pData) = buffer;
 		context->Unmap(m_shadowMapConstantBuffer.Get(), 0);
 	}
-	//----------------------------------//
-	// 定数バッファを設定（終）         //
-	//----------------------------------//
 }
 
 // シャドウマップ作成時に呼び出すカスタムステート
@@ -237,7 +229,6 @@ void ShadowMap::DrawShadowMap(ID3D11DeviceContext* context)
 }
 
 // 影付きのモデルを描画したい時に呼び出すカスタムステート
-// テクスチャなしのモデルを表示したい場合は第２引数をfalseにする事
 void ShadowMap::DrawShadow(ID3D11DeviceContext* context, bool texture)
 {
 	// 入力レイアウトの設定

@@ -1,17 +1,23 @@
+//================================================
+// 概　要：プレイヤーカメラのプログラム
+// 作成日：2024/6/24
+// 作成者：松戸浩希
+//================================================
+
 #pragma once
 
 #include "ImaseLib/Camera.h"
 
 // ゲームカメラ
-class GameCamera : public Imase::Camera
+class GameCamera : public Matsudo::Camera
 {
 public:
 
 	// カメラのタイプ
 	enum class Type
 	{
-		Type_A,	// プレイヤーの後ろから追いかけるカメラ
-		Type_B	// プレイヤーの周りを回るカメラ
+		Type_Back,	// プレイヤーの後ろから追いかけるカメラ
+		Type_Around	// プレイヤーの周りを回るカメラ
 	};
 
 private:

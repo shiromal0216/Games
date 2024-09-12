@@ -19,9 +19,6 @@
     <ImageContentTask Include="Textures\Stage3Contents.png">
       <Filter>Textures</Filter>
     </ImageContentTask>
-    <ImageContentTask Include="Textures\STAGECLEAR.png">
-      <Filter>Textures</Filter>
-    </ImageContentTask>
     <ImageContentTask Include="Textures\StartGuide.png">
       <Filter>Textures</Filter>
     </ImageContentTask>
@@ -109,6 +106,9 @@
     <ImageContentTask Include="Textures\MapGuide.png">
       <Filter>Textures</Filter>
     </ImageContentTask>
+    <ImageContentTask Include="Textures\STAGECLEAR.png">
+      <Filter>Textures</Filter>
+    </ImageContentTask>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\PixelShader.hlsl">
@@ -174,9 +174,6 @@
       <Filter>Task</Filter>
     </ClCompile>
     <ClCompile Include="Scene\GameCamera.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\StageSelectScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene\TitleScene.cpp">
@@ -295,9 +292,6 @@
     <ClInclude Include="Scene\Object.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\StageSelectScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Scene\TitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
@@ -332,9 +326,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="ImaseLib">
-      <UniqueIdentifier>{73c5d245-e03c-4cf3-9d69-2b49e3fe9b34}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{9c14cc5c-f474-4ba9-ab55-9f4c130c15fd}</UniqueIdentifier>
     </Filter>
@@ -349,6 +340,9 @@
     </Filter>
     <Filter Include="Textures">
       <UniqueIdentifier>{99fa746e-7422-46e9-aed0-c4714f1edd95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImaseLib">
+      <UniqueIdentifier>{73c5d245-e03c-4cf3-9d69-2b49e3fe9b34}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

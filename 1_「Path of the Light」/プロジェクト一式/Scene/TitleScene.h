@@ -1,3 +1,9 @@
+//================================================
+// 概　要：タイトルシーンのプログラム
+// 作成日：2024/4/22
+// 作成者：マツド コウキ
+//================================================
+
 #pragma once
 
 #include "ImaseLib/SceneManager.h"
@@ -75,7 +81,7 @@ private:
 	enum { ROOT, HEAD, BODY, LEG, ARM_R, ARM_L, RIGHT, MISSILE, PARTS_CNT };
 
 	// ロボットのパーツへのポインタ
-	std::unique_ptr<Imase::ModelPart> m_parts[PARTS_CNT];
+	std::unique_ptr<Matsudo::ModelPart> m_parts[PARTS_CNT];
 
 private:
 
@@ -141,7 +147,7 @@ private:
 	std::unique_ptr<DX::RenderTexture> m_shadowMapRT;
 
 	// シャドウマップ用（デプスステンシル）
-	std::unique_ptr<Imase::DepthStencil> m_shadowMapDS;
+	std::unique_ptr<Matsudo::DepthStencil> m_shadowMapDS;
 
 	// 頂点シェーダー
 	Microsoft::WRL::ComPtr<ID3D11VertexShader> m_VS_Depth;

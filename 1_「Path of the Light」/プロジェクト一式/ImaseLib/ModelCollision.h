@@ -1,17 +1,13 @@
 //--------------------------------------------------------------------------------------
-// File: ModelCollision.h
-//
-// モデル用衝突判定クラス
-//
-// Date: 2023.6.10
-// Author: Hideyasu Imase
-//
+// 概　要：モデル用衝突判定クラス
+// 作成日：2023/6/10
+// 作成者：松戸浩希
 //--------------------------------------------------------------------------------------
 #pragma once
 
 #include "ImaseLib/DisplayCollision.h"
 
-namespace Imase
+namespace Matsudo
 {
 	class ModelCollisionSphere;
 	class ModelCollisionBox;
@@ -79,8 +75,8 @@ namespace Imase
 		}
 
 		// 衝突判定
-		// T この関数を呼び出すクラスの型（CollisionSphereなど）
-		// U クラスのGetBoundingInfo関数が返す型（DirectX::BoundingSphereなど）
+		// T この関数を呼び出すクラスの型
+		// U クラスのGetBoundingInfo関数が返す型
 		template <class T, class U>
 		bool Intersects(T* a, ModelCollision* b)
 		{
@@ -133,8 +129,8 @@ namespace Imase
 		}
 
 		// 内包判定
-		// T この関数を呼び出すクラスの型（CollisionSphereなど）
-		// U クラスのGetBoundingInfo関数が返す型（DirectX::BoundingSphereなど）
+		// T この関数を呼び出すクラスの型
+		// U クラスのGetBoundingInfo関数が返す型
 		template <class T, class U>
 		bool Contains(T* a, ModelCollision* b)
 		{

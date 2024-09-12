@@ -1,17 +1,14 @@
-//--------------------------------------------------------------------------------------
-// File: ShadowMap.h
-//
-// シャドウマップクラス
-//
-// Date: 2023.9.4
-// Author: Hideyasu Imase
-//--------------------------------------------------------------------------------------
+//======================================================================================
+// 概　要：シャドウマップのプログラム
+// 作成日：2024/03/27
+// 作成者：松戸浩希
+//======================================================================================
 #pragma once
 
 #include "SimpleMath.h"
 #include "CommonStates.h"
 
-namespace Imase
+namespace Matsudo
 {
 	class ShadowMap
 	{
@@ -126,16 +123,15 @@ namespace Imase
 		void DrawShadowMap(ID3D11DeviceContext* context);
 
 		// 影付きのモデルを描画したい時に呼び出すカスタムステート
-		// テクスチャなしのモデルを表示したい場合は第２引数をfalseにする事
 		void DrawShadow(ID3D11DeviceContext* context, bool texture);
 
-		// シャドウマップ用テクスチャリソースを取得する関数（デバッグ用）
+		// シャドウマップ用テクスチャリソースを取得する関数
 		ID3D11ShaderResourceView* GetShadowMapTexture()
 		{
 			return m_shadowMapSRV.Get();
 		}
 
-		// 深度バッファの比較オフセット値の設定（ぼかした場合はオフセット値は無効）
+		// 深度バッファの比較オフセット値の設定
 		void SetOffset(float offset)
 		{
 			m_offset = offset;

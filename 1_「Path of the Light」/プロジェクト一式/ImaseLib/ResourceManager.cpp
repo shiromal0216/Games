@@ -1,16 +1,13 @@
 //--------------------------------------------------------------------------------------
-// File: ResourceManager.cpp
-//
-// リソースを管理するクラス
-//
-// Date: 2023.4.27
-// Author: Hideyasu Imase
+// 概　要：リソースを管理するクラス
+// 作成日：2023/4/27
+// 作成者：松戸浩希
 //--------------------------------------------------------------------------------------
 #include "pch.h"
 #include "ResourceManager.h"
 #include "ReadData.h"
 
-using namespace Imase;
+using namespace Matsudo;
 
 bool ResourceManager::LoadData(const wchar_t* name)
 {

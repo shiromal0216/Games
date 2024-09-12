@@ -1,17 +1,15 @@
 //--------------------------------------------------------------------------------------
-// File: DepthStencil.cpp
-//
-// Helper for managing offscreen render targets
-//
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
+// 概　要：深度ステンシル作成のためのヘルパークラス
+// ※MicosoftのRenderTextureクラスを参考に作成
+// 作成日：2023/11/4
+// 作成者：松戸浩希
 //-------------------------------------------------------------------------------------
 
 #include "pch.h"
 #include "DepthStencil.h"
 
 using namespace DirectX;
-using namespace Imase;
+using namespace Matsudo;
 
 DepthStencil::DepthStencil(DXGI_FORMAT format) noexcept :
     m_format(format),

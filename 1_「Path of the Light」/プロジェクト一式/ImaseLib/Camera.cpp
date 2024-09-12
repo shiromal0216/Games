@@ -1,16 +1,13 @@
 //--------------------------------------------------------------------------------------
-// File: Camera.cpp
-//
-// カメラクラス
-//
-// Date: 2023.6.24
-// Author: Hideyasu Imase
+// 概　要：カメラクラスのプログラム
+// 作成日: 2023/6/24
+// 作成者: 松戸浩希
 //--------------------------------------------------------------------------------------
 #include "pch.h"
 #include "Camera.h"
 
 using namespace DirectX;
-using namespace Imase;
+using namespace Matsudo;
 
 // 一応ディフォルト値を定義するけど調整して下さい
 const float Camera::EYE_SPEED_RATE = 0.05f;		// カメラの位置への距離の差分に対する割合

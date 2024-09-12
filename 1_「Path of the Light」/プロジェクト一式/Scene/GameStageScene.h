@@ -1,3 +1,9 @@
+//================================================
+// 概　要：ゲームステージのプログラム
+// 作成日：2024/4/22
+// 作成者：マツド コウキ
+//================================================
+
 #pragma once
 
 #include "ImaseLib/SceneManager.h"
@@ -84,7 +90,7 @@ private:
 	enum { ROOT, HEAD, BODY, LEG, ARM_R, ARM_L, LIGHT, MISSILE, PARTS_CNT };
 
 	// ロボットのパーツへのポインタ
-	std::unique_ptr<Imase::ModelPart> m_parts[PARTS_CNT];
+	std::unique_ptr<Matsudo::ModelPart> m_parts[PARTS_CNT];
 
 	// ミサイル発射フラグ
 	bool m_fireFlag;
@@ -249,6 +255,10 @@ private:
 
 	// シャドウマップのサイズ
 	static const int SHADOWMAP_SIZE = 512;
+	// 壁の数
+	static const int WALL_NUM = 4;
+	// モデルの数
+	static const int OBJECT_NUM = 7;
 
 	// ------------------------------------- //
 	// モデルの位置の定数化
@@ -322,7 +332,7 @@ private:
 	std::unique_ptr<DX::RenderTexture> m_shadowMapRT;
 
 	// シャドウマップ用（デプスステンシル）
-	std::unique_ptr<Imase::DepthStencil> m_shadowMapDS;
+	std::unique_ptr<Matsudo::DepthStencil> m_shadowMapDS;
 
 	// 頂点シェーダー
 	Microsoft::WRL::ComPtr<ID3D11VertexShader> m_VS_Depth;
@@ -382,9 +392,6 @@ private:
 		const DirectX::BoundingOrientedBox& box1,
 		const DirectX::BoundingOrientedBox& box2
 	);
-
-	// 衝突判定用の表示オブジェクトへのポインタ
-	//std::unique_ptr<Imase::DisplayCollision> m_displayCollision;
 
 	// 衝突判定用オブジェクト
 	CollisionTest::Object m_robotColl[5];	// ロボット

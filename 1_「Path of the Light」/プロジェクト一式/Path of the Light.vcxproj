@@ -215,7 +215,6 @@
     <ClInclude Include="Scene\GameCamera.h" />
     <ClInclude Include="Scene\GameStageScene.h" />
     <ClInclude Include="Scene\Object.h" />
-    <ClInclude Include="Scene\StageSelectScene.h" />
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="StepTimer.h" />
@@ -245,7 +244,6 @@
     <ClCompile Include="RenderTexture.cpp" />
     <ClCompile Include="Scene\GameCamera.cpp" />
     <ClCompile Include="Scene\GameStageScene.cpp" />
-    <ClCompile Include="Scene\StageSelectScene.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
     <ClCompile Include="Task\Number.cpp" />
   </ItemGroup>
@@ -254,6 +252,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="directx.ico" />
+    <ImageContentTask Include="Textures\STAGECLEAR.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ImageContentTask>
     <ImageContentTask Include="Textures\MapGuide.png">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ImageContentTask>
@@ -282,9 +283,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ImageContentTask>
     <ImageContentTask Include="Textures\Title.png">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ImageContentTask>
-    <ImageContentTask Include="Textures\STAGECLEAR.png">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ImageContentTask>
     <ImageContentTask Include="Textures\SettledGuide.png">
@@ -484,13 +482,13 @@
     <Import Project="$(VCTargetsPath)\BuildCustomizations\ImageContentTask.targets" />
     <Import Project="$(VCTargetsPath)\BuildCustomizations\MeshContentTask.targets" />
     <Import Project="packages\Microsoft.XAudio2.Redist.1.2.11\build\native\Microsoft.XAudio2.Redist.targets" Condition="Exists('packages\Microsoft.XAudio2.Redist.1.2.11\build\native\Microsoft.XAudio2.Redist.targets')" />
-    <Import Project="packages\directxtk_desktop_2019.2023.10.31.1\build\native\directxtk_desktop_2019.targets" Condition="Exists('packages\directxtk_desktop_2019.2023.10.31.1\build\native\directxtk_desktop_2019.targets')" />
+    <Import Project="packages\directxtk_desktop_2019.2024.6.5.1\build\native\directxtk_desktop_2019.targets" Condition="Exists('packages\directxtk_desktop_2019.2024.6.5.1\build\native\directxtk_desktop_2019.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.XAudio2.Redist.1.2.11\build\native\Microsoft.XAudio2.Redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.XAudio2.Redist.1.2.11\build\native\Microsoft.XAudio2.Redist.targets'))" />
-    <Error Condition="!Exists('packages\directxtk_desktop_2019.2023.10.31.1\build\native\directxtk_desktop_2019.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtk_desktop_2019.2023.10.31.1\build\native\directxtk_desktop_2019.targets'))" />
+    <Error Condition="!Exists('packages\directxtk_desktop_2019.2024.6.5.1\build\native\directxtk_desktop_2019.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\directxtk_desktop_2019.2024.6.5.1\build\native\directxtk_desktop_2019.targets'))" />
   </Target>
 </Project>

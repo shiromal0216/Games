@@ -1,17 +1,13 @@
 //--------------------------------------------------------------------------------------
-// File: Collision.cpp
-//
-// モデル用衝突判定クラス
-//
-// Date: 2023.6.10
-// Author: Hideyasu Imase
-//
+// 概　要：モデル用衝突判定クラス
+// 作成日：2023/6/10
+// 作成者：松戸浩希
 //--------------------------------------------------------------------------------------
 #include "pch.h"
 #include "ModelCollision.h"
 
 using namespace DirectX;
-using namespace Imase;
+using namespace Matsudo;
 
 // コンストラクタ
 ModelCollision::ModelCollision(CollisionType type)
@@ -20,8 +16,8 @@ ModelCollision::ModelCollision(CollisionType type)
 }
 
 // ------------------------------------------------------------------------------- //
-
 // コンストラクタ
+// ------------------------------------------------------------------------------- //
 ModelCollisionSphere::ModelCollisionSphere(DirectX::Model* pModel)
 	: ModelCollision(ModelCollision::CollisionType::Sphere)
 {
@@ -71,8 +67,8 @@ void ModelCollisionSphere::AddDisplayCollision(Imase::DisplayCollision* displayC
 }
 
 // ------------------------------------------------------------------------------- //
-
 // コンストラクタ
+// ------------------------------------------------------------------------------- //
 ModelCollisionBox::ModelCollisionBox(DirectX::Model* pModel)
 	: ModelCollision(ModelCollision::CollisionType::AABB)
 {
@@ -122,8 +118,8 @@ void ModelCollisionBox::AddDisplayCollision(Imase::DisplayCollision* displayColl
 }
 
 // ------------------------------------------------------------------------------- //
-
 // コンストラクタ
+// ------------------------------------------------------------------------------- //
 ModelCollisionOrientedBox::ModelCollisionOrientedBox(DirectX::Model* pModel)
 	: ModelCollision(ModelCollision::CollisionType::OBB)
 {

@@ -1,9 +1,14 @@
+//================================================
+// 概　要：タイトルシーンのプログラム
+// 作成日：2024/4/22
+// 作成者：マツド コウキ
+//================================================
+
 #include "pch.h"
 #include "TitleScene.h"
 #include "DebugDraw.h"
 #include "ReadData.h"
 #include <iomanip>
-#include "StageSelectScene.h"
 #include "GameStageScene.h"
 
 using namespace DirectX;
@@ -32,14 +37,14 @@ void TitleScene::Initialize()
 	m_camera.SetPlayer(m_robotPosition, m_robotRotate);
 
 	// ロボットの各パーツの作成
-	m_parts[ROOT] = std::make_unique<Imase::ModelPart>();
-	m_parts[HEAD] = std::make_unique<Imase::ModelPart>(m_headModel.get());
-	m_parts[BODY] = std::make_unique<Imase::ModelPart>(m_bodyModel.get());
-	m_parts[LEG]  = std::make_unique<Imase::ModelPart>(m_legModel.get());
-	m_parts[ARM_R] = std::make_unique<Imase::ModelPart>(m_armRModel.get());
-	m_parts[ARM_L] = std::make_unique<Imase::ModelPart>(m_armLModel.get());
-	m_parts[RIGHT] = std::make_unique<Imase::ModelPart>(m_rightModel.get());
-	m_parts[MISSILE] = std::make_unique<Imase::ModelPart>(m_missileModel.get());
+	m_parts[ROOT] = std::make_unique<Matsudo::ModelPart>();
+	m_parts[HEAD] = std::make_unique<Matsudo::ModelPart>(m_headModel.get());
+	m_parts[BODY] = std::make_unique<Matsudo::ModelPart>(m_bodyModel.get());
+	m_parts[LEG]  = std::make_unique<Matsudo::ModelPart>(m_legModel.get());
+	m_parts[ARM_R] = std::make_unique<Matsudo::ModelPart>(m_armRModel.get());
+	m_parts[ARM_L] = std::make_unique<Matsudo::ModelPart>(m_armLModel.get());
+	m_parts[RIGHT] = std::make_unique<Matsudo::ModelPart>(m_rightModel.get());
+	m_parts[MISSILE] = std::make_unique<Matsudo::ModelPart>(m_missileModel.get());
 
 	// ロボットの各パーツを連結する
 	m_parts[ROOT]->SetChild(m_parts[LEG].get());
@@ -73,6 +78,10 @@ void TitleScene::Initialize()
 	ConstantBuffer2 cb = {};
 	cb.fCosTheta = cosf(XMConvertToRadians(m_lightTheta / 2.0f));
 	context->UpdateSubresource(m_constantBuffer2.Get(), 0, nullptr, &cb, 0, 0);
+
+	// 閉じているシーンをオープンさせる
+	auto transitionMask = GetUserResources()->GetTransitionMask();
+	transitionMask->TitleOpen();
 }
 
 void TitleScene::Update(float elapsedTime)
@@ -88,7 +97,7 @@ void TitleScene::Update(float elapsedTime)
 	m_debugCamera->Update();
 
 	// カメラ回転
-	m_camera.SetType(GameCamera::Type::Type_B);
+	m_camera.SetType(GameCamera::Type::Type_Around);
 
 	// ロボットの移動
 	m_robotPosition += SimpleMath::Vector3::Transform(SimpleMath::Vector3(0.0f, 0.0f, 0.01f), m_robotRotate);
@@ -111,7 +120,7 @@ void TitleScene::Update(float elapsedTime)
 	// クローズしたら別のシーンへ
 	if (transitionMask->IsClose() && transitionMask->IsEnd())
 	{
-		ChangeScene <StageSelectScene>();
+		ChangeScene <GameStageScene>();
 	}
 }
 
@@ -321,7 +330,7 @@ void TitleScene::CreateDeviceDependentResources()
 	m_shadowMapRT->SetWindow(rect);
 
 	// デプスステンシルの作成（シャドウマップ用）
-	m_shadowMapDS = std::make_unique<Imase::DepthStencil>(DXGI_FORMAT_D32_FLOAT);
+	m_shadowMapDS = std::make_unique<Matsudo::DepthStencil>(DXGI_FORMAT_D32_FLOAT);
 	m_shadowMapDS->SetDevice(device);
 	m_shadowMapDS->SetWindow(rect);
 
